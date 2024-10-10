@@ -21,3 +21,4 @@ jobs:
       run-piuparts: false
       upload-artifacts: true
       extra-packages: libwpewebkit-1.1-dev devscripts curl debhelper libwpebackend-fdo-1.0-dev meson libmanette-0.2-dev libinput-dev libgbm-dev libdrm-dev debian-keyring
+      before-build-hook: cd cog-0.18.4
