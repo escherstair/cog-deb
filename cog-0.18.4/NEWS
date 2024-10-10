@@ -1,0 +1,253 @@
+=======================
+0.18.4 - April 12, 2024
+=======================
+
+- meson: Fix the build in systems where the "ln" command cannot calculate
+  relative symlink target paths.
+- wl: Fix some items in popup menus not being rendered.
+- wl: Add support for weston-protocols version 14.
+
+==========================
+0.18.3 - February 26, 2024
+==========================
+
+- drm: Fix handling of the scaling factor setting.
+- gtk4: Take scaling factor into account for pointer events.
+- launcher: Support toggling WebKit features with a new --features/-F command
+  line option, when built against WebKit 2.42.0 or newer.
+
+==========================
+0.18.2 - December 13, 2023
+==========================
+
+- drm: Fix crash on iMX.6 (and possibly others) by improving how the CRTC
+  and encoder combination is chosen.
+- wl: Add support for Weston protocols version 13.
+- launcher: Handle GApplication activation to avoid a warning.
+
+==========================
+0.18.1 - November 15, 2023
+==========================
+
+- core: Avoid leaking web views due to CogShell holding one reference
+  too much on them.
+- drm: Fix touch region dimensions when the output is rotated by 90 or
+  270 degrees.
+- meson: Fix configuration error when only the Wayland platform plug-in
+  is selected.
+
+=====================
+0.18.0 - May 20, 2023
+=====================
+
+- wl: Make output device scaling configuration more robust, which among
+  other things fixes blurry rendering in some compositors.
+
+======================
+0.17.90 - May 12, 2023
+======================
+
+- drm: Properly support input-less setups and situations in which the
+  initialization of the XKB context may have failed.
+- x11, wl: Make mouse scroll wheel behaviour snappier.
+- launcher: Support passing the platform plug-in name and its parameters
+  using environment variables.
+
+=======================
+0.17.1 - March 11, 2023
+=======================
+
+- Support building against the new WPE WebKit 2.0 API.
+- Allow chossing the gamepad backend at runtime.
+- meson: Build in C11 mode by default.
+- drm, wl: Improved plug-in documentation.
+- headless: Allow configuring the maximum refresh rate.
+- gtk4: Follow device scale factor changes.
+- wl: Add support for libweston-12-protocols.
+- wl: Fix usage of raw codes for keyboard input.
+- wl: Fix issues due to attachment of buffers with mismatched sizes.
+
+==========================
+0.15.1 - September 2, 2022
+==========================
+
+- launcher: Add new "--proxy" and "--ignore-host" command line options, which
+  allow setting up a network proxy and a list of hosts that would bypass it.
+- drm, gtk4, wl, x11: Add support for gamepads using libmanette.
+- build: Switch the build system from CMake to Meson.
+
+=======================
+0.13.90 - June 29, 2022
+=======================
+
+- cmake: Enable libsoup3 usage by default, USE_SOUP2=ON can still be specified
+  to build against libsoup2.
+- cmake: Require version 3.12, which is the same minimum as needed by WebKit.
+- cmake: Link the same wpebackend-fdo library in all components to avoid
+  crashes due to multiple copies loaded with different behaviours.
+- cmake: Fix generated .pc file when using an absolute directory for the
+  CMAKE_INSTALL_LIBDIR option instead of a relative one.
+- core: Add "Try again" button to default error pages.
+- gtk4: Fix rendering with drivers that support OpenGL 4.
+- wl: Avoid crashing due to missing callbacks by explicitly binding to
+  supported versions of Wayland protocols.
+- wl: Fix the build with COG_WESTON_DIRECT_DISPLAY enabled.
+- wl: Fix fullscreen surface dimensions when using SHM buffers.
+- wl: Add keybindings to refresh the current page (Ctrl-R, F5).
+- x11: Fix underlinking when the --as-needed linker flag is in use.
+- x11: Fix rendering in non-composited (traditional) window managers.
+- drm, gtk4, x11: Factor out and reuse the GLES textured quad painting code.
+- drm, wl, x11: Add refresh rate reporting to let WebKit pace rendering to
+  match the output device.
+
+=========================
+0.13.3 - January 12, 2022
+=========================
+
+- core: Fix platform plug-ins not being found due to COG_MODULEDIR being
+  incorrectly defined as a relative path at build configuration time.
+- gtk4: Fix handling of mouse events when the device scale factor changes.
+- gtk4: Improve compatibility with more graphics drivers by marking shaders
+  as compatible with all GLSL versions.
+
+=========================
+0.13.2 - December 9, 2021
+=========================
+
+- launcher: Add new "--platform-params"/"-O" command line option, which
+  allows passing parameters to platforms plug-ins during initialization.
+- drm: Add support for output rotation by means of a new OpenGL ES based
+  renderer, which can be enabled with "cog -O renderer=gles,rotation=1".
+- drm: Rotate input device coordinates as needed to match output rotation.
+
+==========================
+0.13.1 - November 26, 2021
+==========================
+
+- launcher: Support setting memory limits using command line options.
+- core: Remove CogLauncher from the library, as it is in practice an
+  implementation detail of the cog launcher.
+- cmake: Fix calculation of default installation path for platform plug-ins.
+
+=========================
+0.11.1 - November 3, 2021
+=========================
+
+- core: Changed platform plug-ins to be able to automatically detect which
+  one should be used. Passing the "--platform=" command line option to the
+  launcher is now optional.
+- core: Added support for building against libsoup3.
+- core: Added CogHostRoutesHandler, which can route URI scheme requests
+  with different host parts to other handlers.
+- core, cog: Added support for running in WebDriver automation mode.
+- cog: New "--enable-sandbox" command line option, which allows isolating
+  rendering processes from the rest of the system.
+- cog: New "--content-filter=" command line option, which allows loading
+  a content blocker (WebKitUserContentFilter) JSON rule set.
+- drm: Implemented handling of pointer axis/wheel/finger/continuous events
+  and absolute motion events.
+- wl: Renamed "fdo" platform module to "wl" (Wayland) as it better reflects
+  its usage; the old name still works e.g. when using "cog --platform=fdo"
+  but it is considered deprecated and will cause a warning.
+- wl, gtk4: Added support for fullscreening web views.
+- gtk4: Honor the CogShell.device-scale-factor property.
+
+======================
+0.9.1 - March 16, 2021
+======================
+
+- core: Added CogPrefixRoutesHandler, which can route URI scheme requests
+  with different path prefixes to other handlers.
+- core: Added new CogShell.device-scale-factor property.
+- core: Added support in CogDirectoryFilesHandler to use the URI host part
+  as a path component, to ignore a certain amount of path components, and
+  expose the base path as a property.
+- core: Removed support for building using WebKitGTK, only the WPE port is
+  supported now.
+- drm: The DRM/KMS platform module is now built by default.
+- drm: Added support for key press event repeat.
+- drm: Added support for mouse cursor.
+- drm: Added support for atomic modesetting, which is automatically used
+  by default when support is detected in the video driver.
+- drm: Added support for limiting the maximum used video mode width and
+  height, settable using the COG_PLATFORM_DRM_MODE_MAX environment variable.
+- drm: Fixed usage of the specified output device scaling factor.
+- drm: Improve logging output.
+- drm, fdo: Added support for SHM buffer exports, which for example allows
+  using Mesa's software rasterization.
+- fdo: Try using the largest available output video mode when using the
+  zwp_fullscreen_shell_v1 protocol.
+- headless: Added new "headless" platform module, which does not produce
+  output and can be used without any graphics hardware e.g. in combination
+  with Mesa's software rasterization.
+- x11: Added new "x11" platform module, which uses an X11 window to paint
+  rendered web content using XCB and OpenGL.
+
+======================
+0.7.1 - April 11, 2020
+======================
+
+- Support keeping a reference to the configuration file, which platform
+  plug-ins can use to obtain their own configuration options.
+- fdo: Added support for option menus.
+- fdo: Set a default pointer cursor.
+- fdo: Removed redundant EGL state.
+- fdo: Fix possible usage of uninitialized libxkbcommon structures.
+
+=====================
+0.3.1 - June 28, 2018
+=====================
+
+- Fix installed cogcore.pc file to use the correct wpe-webkit-1.0 module as
+  dependency.
+- fdo: Use wayland-scanner and wayland-protocols to generate Wayland protocol
+  code, instead of shipping pregenerated copies.
+- fdo: Improved debug logging.
+
+======================
+0.3.0 - March 28, 2018
+======================
+
+- Support configuring the background color of the Web view.
+- Add an option to control permission requests.
+- The output of "cog --help-websettings" now is sorted alphabetically by
+  option name.
+- Properly handle URIs in the command line in some corner cases, for example
+  when they include passwords or fragment identifiers.
+- fdo: Avoid dereferencing a NULL view backend by creating the Wayland event
+  source always after a valid backend is instantiated
+- fdo: Set the opaque region of Wayland surfaces when fullscreened, which
+  allows the compositor to optimize redraws.
+
+=========================
+0.2.0 - December 13, 2018
+=========================
+
+- fdo: Fix potential screen tearing by releasing each EGLImage on the
+  release callback for its wl_buffer.
+- fdo: Explicitly set the backend library name.
+- Fix remotely controlling Cog over D-Bus.
+
+=========================
+0.1.2 - December 13, 2018
+=========================
+
+- Avoid error "xdg_surface not configured".
+- Fix possible usage of a NULL Wayland EGL window object.
+
+========================
+0.1.1 - December 4, 2018
+========================
+
+- fdo: Support maximizing the Wayland surface by setting the
+  COG_PLATFORM_FDO_VIEW_MAXIMIZE environment variable.
+- Make it possible to build against GLib 2.58 and newer.
+- Workaround WebKitGTK+ bug #150303.
+- Properly set the application identifier in the generated D-Bus
+  policy configuration file.
+
+========================
+0.1.1 - December 4, 2018
+========================
+
+- Initial release.

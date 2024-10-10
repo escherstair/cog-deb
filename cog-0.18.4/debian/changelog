@@ -1,0 +1,217 @@
+cog (0.18.4-1) unstable; urgency=medium
+
+  * New upstream release.
+
+ -- Alberto Garcia <berto@igalia.com>  Wed, 15 May 2024 15:24:46 +0200
+
+cog (0.18.3-2) unstable; urgency=medium
+
+  * debian/control:
+    - Build using libwpewebkit-2.0-dev.
+
+ -- Alberto Garcia <berto@igalia.com>  Fri, 12 Apr 2024 01:31:43 +0200
+
+cog (0.18.3-1) unstable; urgency=medium
+
+  * New upstream release.
+  * debian/copyright:
+    - Update copyright years.
+  * debian/control:
+    - Require dpkg-dev 1.22.5 and wpewebkit 2.42.5-1.1.
+
+ -- Alberto Garcia <berto@igalia.com>  Sat, 16 Mar 2024 21:58:23 +0100
+
+cog (0.18.2-1) unstable; urgency=medium
+
+  * New upstream release.
+
+ -- Alberto Garcia <berto@igalia.com>  Wed, 13 Dec 2023 13:14:33 +0100
+
+cog (0.18.1-1) unstable; urgency=medium
+
+  * New upstream release.
+
+ -- Alberto Garcia <berto@igalia.com>  Wed, 15 Nov 2023 12:20:46 +0100
+
+cog (0.18.0-3) unstable; urgency=medium
+
+  * debian/control:
+    - Add build dependency on libepoxy-dev (Closes: #1051107).
+
+ -- Alberto Garcia <berto@igalia.com>  Sat, 02 Sep 2023 22:30:44 +0200
+
+cog (0.18.0-2) unstable; urgency=medium
+
+  * debian/control:
+    - Use libwpewebkit-1.1-dev again. We'll switch to 2.0 when all its
+      reverse dependencies are ready.
+
+ -- Alberto Garcia <berto@igalia.com>  Fri, 21 Jul 2023 13:37:42 +0200
+
+cog (0.18.0-1) experimental; urgency=medium
+
+  * New upstream release.
+
+ -- Alberto Garcia <berto@igalia.com>  Sun, 21 May 2023 18:57:37 +0200
+
+cog (0.17.1-1) experimental; urgency=medium
+
+  * New upstream development release.
+  * debian/copyright:
+    - Update copyright years.
+  * debian/control:
+    - Use libwpewebkit-2.0-dev instead of 1.1.
+    - Update Standards-Version to 4.6.2.
+
+ -- Alberto Garcia <berto@igalia.com>  Wed, 15 Mar 2023 14:57:52 +0100
+
+cog (0.16.1-1) unstable; urgency=medium
+
+  * New upstream release.
+
+ -- Alberto Garcia <berto@igalia.com>  Tue, 18 Oct 2022 15:23:35 +0200
+
+cog (0.16.0-1) unstable; urgency=medium
+
+  * New upstream release.
+  * debian/copyright:
+    - Remove obsolete files.
+  * debian/control:
+    - Replace build dependency on cmake with meson.
+    - Add build dependency on libmanette-0.2-dev.
+  * debian/rules:
+    - Stop building with -DUSE_SOUP2=OFF, this is no longer necessary.
+
+ -- Alberto Garcia <berto@igalia.com>  Tue, 27 Sep 2022 15:04:18 +0200
+
+cog (0.14.0-1) unstable; urgency=medium
+
+  * New upstream release.
+  * debian/cog.lintian-overrides:
+    - Update overrides.
+    - Add no-symbols-control-file override.
+  * debian/control:
+    - Set the debhelper compatibility level to 13.
+    - Update Standards-Version to 4.6.1.0.
+
+ -- Alberto Garcia <berto@igalia.com>  Wed, 24 Aug 2022 15:34:44 +0200
+
+cog (0.12.4-1) unstable; urgency=medium
+
+  * New upstream release.
+  * Switch from libsoup2 to libsoup3:
+    - debian/control: change build dependency to libwpewebkit-1.1-dev.
+    - debian/rules: build with -DUSE_SOUP2=OFF.
+
+ -- Alberto Garcia <berto@igalia.com>  Tue, 05 Apr 2022 10:16:34 +0200
+
+cog (0.12.1-1) unstable; urgency=medium
+
+  * New upstream release.
+  * Drop debian/patches/fix-moduledir.patch.
+  * debian/watch:
+    - Scan for stable releases only.
+  * debian/copyright:
+    - Update copyright years.
+
+ -- Alberto Garcia <berto@igalia.com>  Fri, 25 Feb 2022 00:37:38 +0100
+
+cog (0.12.0-2) unstable; urgency=medium
+
+  * debian/patches/fix-moduledir.patch:
+    - This patch was broken, fix applying upstream commit 64effa9.
+
+ -- Alberto Garcia <berto@igalia.com>  Fri, 04 Feb 2022 00:20:24 +0100
+
+cog (0.12.0-1) unstable; urgency=medium
+
+  * New upstream release.
+  * Install modules in multiarch-compliant path:
+    - debian/patches/fix-moduledir.patch: Fix path definition.
+    - debian/install: Update installation rules.
+  * debian/cog.lintian-overrides:
+    - Update overrides.
+  * debian/control:
+    - Update Standards-Version to 4.6.0.1 (no changes).
+
+ -- Alberto Garcia <berto@igalia.com>  Wed, 24 Nov 2021 21:57:03 +0100
+
+cog (0.10.1-1) unstable; urgency=medium
+
+  * New upstream release.
+
+ -- Alberto Garcia <berto@igalia.com>  Wed, 08 Sep 2021 09:33:20 +0200
+
+cog (0.10.0-2) unstable; urgency=medium
+
+  * debian/control:
+    - Build with libwpebackend-fdo-1.0-dev 1.10.0. This enables SHM buffer
+      exports.
+
+ -- Alberto Garcia <berto@igalia.com>  Wed, 16 Jun 2021 15:31:16 +0200
+
+cog (0.10.0-1) experimental; urgency=medium
+
+  * New upstream release.
+  * debian/control:
+    - Add build dependencies on libdrm-dev, libgbm-dev and libinput-dev.
+  * debian/install:
+    - Install all platform plugins (this version builds two new ones: drm
+      and headless).
+  * debian/cog.lintian-overrides:
+    - Override sharedobject-in-library-directory-missing-soname in all
+      plugins
+    - Override library-not-linked-against-libc in the headless plugin
+      (this is a false positive, this plugin does not use libc symbols)
+  * Drop use-fdo-backend.patch.
+
+ -- Alberto Garcia <berto@igalia.com>  Tue, 18 May 2021 23:25:25 +0200
+
+cog (0.8.1-1) unstable; urgency=medium
+
+  * New upstream release.
+  * debian/copyright:
+    - Update copyright years.
+  * debian/watch:
+    - Set version to 4 (fixes older-debian-watch-file-standard).
+  * debian/control:
+    - Update Standards-Version to 4.5.1 (no changes).
+
+ -- Alberto Garcia <berto@igalia.com>  Wed, 24 Feb 2021 10:57:15 +0100
+
+cog (0.8.0-1) unstable; urgency=medium
+
+  * New upstream release.
+  * debian/patches/use-fdo-backend.patch:
+    - Refresh patch.
+  * debian/control:
+    - Add build dependency on libcairo-dev.
+
+ -- Alberto Garcia <berto@igalia.com>  Mon, 14 Sep 2020 17:24:21 +0200
+
+cog (0.6.0-1) unstable; urgency=medium
+
+  * New upstream release.
+  * debian/copyright:
+    - Update copyright years.
+  * Upstream provides the manpages now, add them to debian/install and
+    remove the ones shipped in the debian directory.
+  * Add uninstalled development files to debian/not-installed so
+    dh_misssing does not complain about them.
+
+ -- Alberto Garcia <berto@igalia.com>  Mon, 30 Mar 2020 14:09:27 +0200
+
+cog (0.4.0-2) unstable; urgency=medium
+
+  * Set the debhelper compatibility level to 12:
+    - Get rid of debian/compat.
+    - Add build dependency on debhelper-compat.
+  * Add upstream metadata file.
+
+ -- Alberto Garcia <berto@igalia.com>  Mon, 03 Feb 2020 14:37:35 +0100
+
+cog (0.4.0-1) experimental; urgency=medium
+
+  * Initial release (Closes: #949476)
+
+ -- Alberto Garcia <berto@igalia.com>  Sat, 25 Jan 2020 20:01:07 +0100
